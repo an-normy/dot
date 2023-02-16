@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Guest List</title>
+</head>
+<body>
+	<h1>Guest List</h1>
+	
+	<!-- Form to input new guest name -->
+	<form>
+		<label for="guestName">Enter guest name:</label>
+		<input type="text" id="guestName">
+		<button type="button" onclick="addGuest()">Add Guest</button>
+	</form>
+	
+	<!-- Table to display guest list -->
+	<table id="guestTable">
+		<thead>
+			<tr>
+				<th>Name</th>
+			</tr>
+		</thead>
+		<tbody>
+			<!-- Guest names will be added here dynamically -->
+		</tbody>
+	</table>
+	
+	<!-- Script to add and display guest list -->
+	<script>
+		// Empty array to store guest names
+		var guestList = [];
+		
+		// Function to add new guest name to the list
+		function addGuest() {
+			var name = document.getElementById("guestName").value;
+			guestList.push(name);
+			displayGuestList();
+			document.getElementById("guestName").value = "";
+		}
+		
+		// Function to display guest list in the table
+		function displayGuestList() {
+			var table = document.getElementById("guestTable");
+			var tbody = table.getElementsByTagName("tbody")[0];
+			tbody.innerHTML = "";
+			for (var i = 0; i < guestList.length; i++) {
+				var row = tbody.insertRow(i);
+				var cell = row.insertCell(0);
+				cell.innerHTML = guestList[i];
+			}
+		}
+	</script>
+</body>
+</html>
